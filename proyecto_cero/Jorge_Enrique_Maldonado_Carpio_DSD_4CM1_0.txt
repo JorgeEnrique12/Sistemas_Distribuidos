@@ -1,0 +1,706 @@
+
+**************************************************************
+Programa 1 p. 34
+**************************************************************
+
+#include<stdio.h>
+
+int main(){
+    printf("        *\n");
+    printf("       * \n");
+    printf("      *  \n");
+    printf("*    *   \n");
+    printf(" *  *    \n");
+    printf("   *     \n");
+    return 0;
+}
+
+**************************************************************
+Programa 2 p. 34
+**************************************************************
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+    int radius = 10;
+    float v = (4.0f/3.0f) * M_PI * radius * radius * radius;
+    printf("El volumen es %f metros \n",v);
+    return 0;
+}
+
+**************************************************************
+Programa 7 p. 34
+**************************************************************
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+    int amount; 
+    int twentydollars = 0;
+    int tendollars = 0;
+    int fivedollars = 0;
+    int onedollar = 0;
+    printf("Enter a dollar amount: ");
+    scanf("%d",&amount);
+    
+    while(amount >= 20){
+        twentydollars++;
+        amount = amount - 20;
+    }
+    while(amount >= 10){
+        tendollars++;
+        amount = amount - 10;
+    }
+    while(amount >= 5){
+        fivedollars++;
+        amount = amount - 5;
+    }
+    while(amount >= 1){
+        onedollar++;
+        amount = amount - 1;
+    }
+    printf("$20 bills: %d \n",twentydollars);
+    printf("$10 bills: %d \n",tendollars);
+    printf("$5 bills: %d \n",fivedollars);
+    printf("$1 bills: %d \n",onedollar);
+    return 0;
+}
+
+**************************************************************
+Programa 1 p. 50
+**************************************************************
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+    int year = 0;
+    int day = 0;
+    int month = 0;
+    int onedollar = 0;
+    printf("Enter a date (mm/dd/yyyy): ");
+    scanf("%d/%d/%d",&month,&day,&year);
+    printf("You entered the date: %d%d%d \n",year,day,month);
+    
+}
+
+**************************************************************
+Programa 4 p. 50
+**************************************************************
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+    int lada = 0;
+    int first = 0;
+    int second = 0;
+    printf("Enter a phone number [ (xxx) xxx-xxxx ]: ");
+    scanf("(%d) %d-%d",&lada,&first,&second);
+    printf("You entered : %d.%d.%d \n",lada,first,second);
+    
+}
+
+**************************************************************
+Programa 6 p. 50
+**************************************************************
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+    int u1 = 0;
+    int u2 = 0;
+    int d1 = 0;
+    int d2 = 0;
+    printf("Enter two fractions separated by a plus sign: ");
+    scanf("%d/%d+%d/%d",&u1,&d1,&u2,&d2);
+    printf("the sum is : %d/%d \n",(u1*d2 + u2*d1),(d1*d2));
+    
+}
+
+**************************************************************
+Programa 1 p. 71
+**************************************************************
+
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+
+    int number = 0;
+    int d2 = 0;
+    printf("Enter a two digits number: ");
+    scanf("%d",&number);
+    printf("the reversal is : %d%d \n",number%10,number/10);
+    
+}
+
+**************************************************************
+Programa 4 p. 71
+**************************************************************
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+
+    int number = 0;
+    printf("Enter a number between 0 and 32767: ");
+    scanf("%d",&number);
+    printf("the reversal is : %05o \n",number);
+    
+}
+
+**************************************************************
+Programa 5 p. 71
+**************************************************************
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+
+    char  number[12];
+    int check;
+    printf("Enter the first 11 digits of UPC : ");
+    scanf("%s",number);
+    printf("Check digit: ");
+    scanf("%d",&check);
+    printf("\n%d\n", 9 - (((number[check] - 48) - 1)%10));
+    
+}
+
+**************************************************************
+Programa 1 p. 95
+**************************************************************
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+
+    int  number;
+    printf("Ingress a number: ");
+    scanf("%d",&number);
+    if (number < 10){
+        printf("The number %d has 1 digit\n",number);
+    }
+    if (number < 100){
+        printf("The number %d has 2 digit\n",number);
+    }
+    if (number < 1000){
+        printf("The number %d has 3 digit\n",number);
+    }
+    
+}
+
+**************************************************************
+Programa 7 p. 95
+**************************************************************
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+
+    int  number1,number2,number3,number4;
+    int biggest1=0;
+    int smallest1=0;
+    int biggest2=0;
+    int smallest2=0;
+    printf("Enter four integers: ");
+    scanf("%d %d %d %d",&number1,&number2,&number3,&number4);
+    if (number1 > number2){
+        biggest1 = number1;
+        smallest1 = number2;
+    }else{
+        biggest1 = number2;
+        smallest1 = number1;
+    }
+    if (number3 > number4){
+         biggest2 = number3;
+        smallest2 = number4;
+    }
+    else{
+        biggest2 = number4;
+        smallest2 = number3;
+    }
+    if (biggest1 < biggest2){
+        biggest1 = biggest2;
+    }
+    if (smallest1 > smallest2) {
+        smallest1 = smallest2;
+    }
+    printf("Largest: %d \n",biggest1);
+    printf("Smallest: %d \n",smallest1);  
+}
+
+**************************************************************
+Programa 10 p. 95
+**************************************************************
+
+
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+
+    int a;
+    printf("Enter a numerical grade: ");
+    scanf("%d",&a);
+    printf("Letter grade: ");
+    if(a>10){
+        a = a/10;
+    }
+    switch (a)
+    {
+        case  9 ... 10:
+            printf("A\n");
+            break;
+        case  8:
+            printf("B\n");
+            break;
+        case 7:
+            printf("C\n");
+            break;
+        case 6:
+            printf("D\n");
+            break;
+        case 0 ... 5:
+            printf("F\n");
+            break;
+    
+        default:
+            printf("Error");
+    }
+    
+}
+
+**************************************************************
+Programa 1 p. 122
+**************************************************************
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+
+    float number = 1;
+    float big = 0;
+    
+    while(number>0){
+        printf("Enter a number: ");
+        scanf("%f",&number);
+        if(number > big){
+            big = number;
+        }
+    }
+
+    printf("The largest number entered is: %f\n",big);
+    
+   
+    
+    
+}
+**************************************************************
+Programa 8 p. 122
+**************************************************************
+
+
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+
+    int days = 0,start= 0;
+    float big = 0;
+    printf("Enter number of days in month: ");
+    scanf("%d",&days);
+    printf("\nEnter starting day of weekend: ");
+    scanf("%d",&start);
+
+    for(int i = 0; i != days + start; i++){
+        
+        if(i < start - 1){
+            printf("     ");
+            continue;
+        }
+        if (i%6 == 0) {
+            printf("\n");
+        }
+        
+        if (i == days  ) {
+            break;
+        }
+        
+        printf("%5d",i+1);
+    }    
+    printf("\n");
+}
+
+
+**************************************************************
+Programa 11 p. 122
+**************************************************************
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+
+    int n;
+    printf("Enter number of components: ");
+    scanf("%d",&n);
+    float result = 1;
+    
+    for(int i = 1; i <= n; i++)
+    {
+       int fact = 1;
+       for(int j = 1; j <= i; j++){
+           fact = fact*j;
+       }
+        
+       result = result + 1.f/fact;
+    }
+    
+    printf("Result: %f\n",result );
+}
+**************************************************************
+Programa 1 p. 157
+**************************************************************
+int main(){
+
+    int n;
+    printf("Enter number : ");
+    scanf("%d",&n);
+
+    printf("Result: %d\n",i*i );
+}
+**************************************************************
+Programa 6 p. 157
+**************************************************************
+
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+
+    int n;
+    printf("Size of int: %lu",sizeof(int));
+    printf("Size of short: %lu",sizeof(short));
+    printf("Size of long: %lu",sizeof(long));
+    printf("Size of float: %lu",sizeof(float));
+    printf("Size of double: %lu",sizeof(double));
+    printf("Size of long double: %lu",sizeof(long double));
+}
+
+**************************************************************
+Programa 15 p. 157
+**************************************************************
+
+
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+
+    int n;
+    printf("Enter number: ");
+    scanf("%d",&n);
+    int result = 1;
+       for(int j = 1; j <= n; j++){
+           result = result*j;
+       }
+    printf("Factorial: %d\n",result );
+}
+
+**************************************************************
+Programa 7 p. 178
+**************************************************************
+int main(){
+
+    int array[5][5];
+    
+       for(int j = 1; j <= 5; j++){
+           printf("Enter row %d:  ",j);
+           scanf("%d %d %d %d %d",&array[j-1][0],&array[j-1][1],&array[j-1][2],&array[j-1][3],&array[j-1][4]);
+       }
+    printf("Total Rows: %d %d %d %d %d\n",array[0][0]+array[0][1]+array[0][2]+array[0][3]+array[0][4],array[1][0]+array[1][1]+array[1][2]+array[1][3]+array[1][4],array[2][0]+array[2][1]+array[2][2]+array[2][3]+array[2][4],array[3][0]+array[3][1]+array[3][2]+array[3][3]+array[3][4],array[4][0]+array[4][1]+array[4][2]+array[4][3]+array[4][4]);
+    printf("Total Cols: %d %d %d %d %d\n",array[0][0]+array[1][0]+array[2][0]+array[3][0]+array[4][0],array[0][1]+array[1][1]+array[2][1]+array[3][1]+array[4][1],array[0][1]+array[1][2]+array[2][2]+array[3][2]+array[4][2],array[0][3]+array[1][3]+array[2][3]+array[3][3]+array[4][3],array[0][4]+array[1][4]+array[2][4]+array[3][4]+array[4][4]);
+
+}
+**************************************************************
+Programa 17 p. 178
+**************************************************************
+
+
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+#include<string.h>
+
+void generateSquare(int n)
+{
+    int magicSquare[n][n];
+    memset(magicSquare, 0, sizeof(magicSquare));
+ 
+    int i = n/2;
+    int j = n-1;
+
+    for (int num=1; num <= n*n; )
+    {
+        if (i==-1 && j==n) 
+        {
+            j = n-2;
+            i = 0;
+        }
+        else
+        {
+
+            if (j == n)
+                j = 0;
+            if (i < 0)
+                i=n-1;
+        }
+        if (magicSquare[i][j]) 
+        {
+            j -= 2;
+            i++;
+            continue;
+        }
+        else
+            magicSquare[i][j] = num++; 
+ 
+        j++; 
+        i--; 
+    }
+
+    for (i=0; i<n; i++)
+    {
+        for (j=0; j<n; j++)
+            printf("%3d ", magicSquare[i][j]);
+        printf("\n");
+    }
+}
+ 
+int main()
+{
+    int number; 
+    printf("Ingress size: ");
+    scanf("%d",&number);
+    generateSquare (number);
+    return 0;
+}
+
+**************************************************************
+Programa 1 p. 216
+**************************************************************
+void printArray(int * array){
+    
+    for(int i = 0; i < array[i]; i++){
+        printf("%d", array[i]);
+    }
+    
+}
+void max(int * pointer,int * vector){
+    int max;
+    max = *pointer;
+    for(int i = 0; i < vector[i]; i++){
+        if(*pointer > max){
+            max = *pointer;
+        }
+        pointer++;
+    }
+    printArray(vector);
+    for(int i = 0; i < vector[i]; i++){
+        if(max == vector[i]){
+            int tmp = vector[sizeof(vector)-1];
+            vector[sizeof(vector)-1] = vector[i];
+            vector[i] = tmp;
+        }
+    }
+    printArray(vector);
+    
+}
+
+int main (){
+int numeroElementos;
+int * vector;
+int * pointer;
+printf ("¿Cuántos elementos quieres? ");
+scanf ("%d", &numeroElementos);
+ 
+vector = (int*)malloc(5*sizeof(int));
+
+
+for(int i = 0; i < vector[i]; i++){
+    printf("Ingresa el elemento: %d",i+1);
+    scanf("%d",&vector[i]);
+}
+max(pointer,vector);
+}
+**************************************************************
+Programa 6 p. 176
+**************************************************************
+
+
+
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+
+
+int function(int x){
+    return 3*x*x*x*x*x + 2*x*x*x*x -5*x*x*x -x*x + 7*x -6;
+}
+
+int main (){
+    int num;
+    printf ("Ingresa un numero ");
+    scanf ("%d", &num);
+    printf("Resultado: %d\n",function(num));
+}
+
+**************************************************************
+Programa 4 p. 256
+**************************************************************
+
+
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+
+
+void swap(int* p,int* q){
+    int tmp = *p;
+    *p = *q;
+    *q = tmp;
+}
+
+int main (){
+    int p = 3;
+    int q = 4;
+    printf("p: %d,q: %d\n",p,q);
+    swap(&p,&q);
+    printf("p: %d,q: %d\n",p,q);
+}
+
+**************************************************************
+Programa 1 p. 275
+**************************************************************
+
+
+
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+
+
+
+
+int main (){
+    char array[21];
+    char array2[21];
+    
+    printf("Ingress data\n");
+    
+    for(int i = 0; i < sizeof(array); i++){
+        array[i] = getchar();
+        if(array[i] == '\n'){
+            break;
+        }
+        getchar();
+        
+    }
+    array[20] = 0;
+
+    for(int i = 0; i < sizeof(array); i++){
+        array2[i] = array[sizeof(array) - i - 1];
+    }
+    array2[20] = 0;
+    printf("Array: %s\n",array);
+    printf("Reversal: %s\n",array2);
+}
+
+**************************************************************
+Programa 1 p. 311
+**************************************************************
+
+
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+#include<string.h>
+
+
+
+
+int main (){
+    char array[20];
+    char small[20];
+    char large[20];
+    
+    
+    for(;;){
+        scanf("%s",array);
+        if(strcmp(array,"exit")== 0){
+            break;
+        }
+        if (strlen(array) < strlen(small)){
+            strcpy (small,array);
+            continue;
+        }
+        if (strlen(array) > strlen(large)){
+            strcpy (large,array);
+        }
+    }
+    printf("Smallest: %s\n",small);
+    printf("Largest: %s\n",large);
+}
+**************************************************************
+Programa 5 p. 311
+**************************************************************
+
+#include<math.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main( int argc, char *argv[] )  {
+
+   int sum= 0;
+   
+   for(int i = 1; i < argc; i++)
+   {
+       sum = sum + atoi(argv[i]);
+   }
+   printf("Sum: %d\n",sum);
+}
+
+
+**************************************************************
+Programa 18 p. 311
+**************************************************************
+
+
+
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main( int argc, char *argv[] )  {
+
+   char months[12][20]= {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
+   
+   int month;
+   int day;
+   int year;
+   printf("Enter a date");
+   scanf("%d/%d/%d",&month,&day,&year);
+   printf("You entered the date: %s %d, %d",months[month-1],day,year);
+}
