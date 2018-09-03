@@ -1,0 +1,164 @@
+**************************************************
+Ejercicio 8, página 451
+**************************************************
+// class declaration section
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+class Date
+{
+  private:
+    int month;
+    int day;
+    int year;
+  public:
+    Date(int = 7, int = 4, int = 2012); // constructor
+    void setDate(int, int, int);   // member method to copy a date
+    void showDate();               // member method to display a date
+    int DayOfWeek();
+};
+// class implementation section
+Date::Date(int mm, int dd, int yyyy)
+{
+  month = mm;
+  day = dd;
+  year = yyyy;
+}
+
+void Date::setDate(int mm, int dd, int yyyy)
+{
+  month = mm;
+  day = dd;
+  year = yyyy;
+  return;
+}
+void Date::showDate()
+{
+    cout << "The date is ";
+    cout << setfill('0')
+         << setw(2) << month << '/'
+         << setw(2) << day << '/'
+         << setw(2) << year % 100; // extract the last 2 year digits
+    cout << endl;
+  return; 
+}
+int Date::DayOfWeek()
+{
+    int m = month;
+    int d = day;
+    int y = year;
+    if (m < 3) {
+        m = m +12;
+        y = y - 1;
+    }
+    int century = (int)y/100;
+    y = y%100;
+    int t = d + (int)(26 * (m+1)/10) + y + (int)(y/4) - (int)century/4 - 2*century;
+  return t; 
+}
+
+  int main()
+{
+  Date a, b, c(8,1,2018);  // declare 3 objects
+  b.setDate(12,25,2009);  // assign values to b's data members
+  a.showDate();           // display object a's values
+  b.showDate();           // display object b's values
+  c.showDate();    
+  int t = c.DayOfWeek()%7; 
+  
+  switch (t)
+  {
+        case 0:
+        cout << "The day is Friday" << endl;
+        break;
+        case 1:
+        cout << "The day is Saturday" << endl;
+        break;
+        case 2:
+        cout << "The day is Sunday" << endl;
+        break;
+        case 3:
+        cout << "The day is Monday" << endl;
+        break;
+        case 4:
+        cout << "The day is Tuesday" << endl;
+        break;
+        case 5:
+        cout << "The day is Wednesday" << endl;
+        break;
+        case 6:
+        cout << "The day is Thursday" << endl;
+        break;
+      default:
+          break;
+  }  
+  return 0;
+}
+**************************************************
+Ejercicio 3, página 462 
+**************************************************
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+// class declaration section
+class Date
+{
+  private:
+    long yyyymmdd;
+  public:
+    Date(long = 20120704L);
+    Date(int , int , int );   
+    void showDate();  
+};
+
+Date::Date(int mm, int dd, int yyyy)
+{
+  yyyymmdd = yyyy * 10000.0 + mm * 100.0 + dd;
+
+}
+
+Date::Date(long ymd)
+{
+    yyyymmdd = ymd;
+}
+void Date::showDate()
+{
+  cout << "The date is ";
+  cout << yyyymmdd << endl;
+  return;
+}
+int main()
+{
+  Date a, b(4,1,1998), c(20090515L); // declare three objects
+  a.showDate();           // display object a's values
+  b.showDate();           // display object b's values
+  c.showDate();           // display object c's values
+  return 0;
+}
+
+**************************************************
+Ejercicio 6, página 472 
+**************************************************
+**************************************************
+Ejercicio 2, página 481 
+**************************************************
+**************************************************
+Ejercicio 11, página 507 
+**************************************************
+**************************************************
+Ejercicio 4, página 518 
+**************************************************
+**************************************************
+Ejercicio 3, página 528 
+**************************************************
+**************************************************
+Ejercicio 4, página 533 
+**************************************************
+**************************************************
+Ejercicio 9, página 561 
+**************************************************
+**************************************************
+Ejercicio 10, página 562
+**************************************************
