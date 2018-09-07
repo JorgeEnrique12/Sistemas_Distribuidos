@@ -141,24 +141,520 @@ int main()
 **************************************************
 Ejercicio 6, página 472 
 **************************************************
+#include <iostream>
+using namespace std;
+// class declaration section
+class Elevator
+{
+  private:
+    int elNum;
+    int currentFloor; 
+    int highestFloor;
+  public:
+    Elevator(int = 1, int = 1, int = 15);  // constructor
+    void request(int);
+};
+// class implementation section
+Elevator::Elevator(int idnum, int cfloor, int maxfloor)
+{
+  elNum = idnum;
+  currentFloor = cfloor;
+  highestFloor = maxfloor;
+}
+void Elevator::request(int newfloor)
+{
+ if (newfloor < 1 || newfloor > highestFloor || newfloor == currentFloor)
+    ;  // do nothing
+  else if (newfloor > currentFloor) // move elevator up
+  {
+    cout << "\nElevator " << elNum
+         << " starting at floor " << currentFloor << endl;
+    while (newfloor > currentFloor)
+    {
+      currentFloor++; // add one to current floor
+      cout << " Going Up - now at floor " << currentFloor << endl;
+    }
+    cout << "Elevator " << elNum
+         << " stopping at floor " << currentFloor << endl;
+  }
+  else // move elevator down
+  {
+    cout << "\nElevator " << elNum
+         << " starting at floor " << currentFloor << endl;
+    while (newfloor < currentFloor)
+    {
+      currentFloor--;   // subtract one from current floor
+      cout << " Going Down - now at floor " << currentFloor << endl;
+    }
+    cout << "Elevator "<< elNum
+         << " Stopping at floor " << currentFloor << endl;
+  }
+  return;
+}
+int main()
+{
+  Elevator a;   // declare 1 object of type Elevator
+  int valid_request = 0;
+  int last = 0;
+  a.request(6);
+  a.request(3);
+  while(valid_request!=5){
+    int selected_floor = rand()%15 + 1;
+    if (selected_floor==last) 
+        continue;
+    a.request(selected_floor);
+    valid_request++;
+
+  }
+  return 0;
+}
 **************************************************
 Ejercicio 2, página 481 
 **************************************************
+#include <iostream>
+#include <math.h>
+using namespace std;
+// class declaration section
+class Circle
+{
+  private:
+    int xcircle;
+    int ycircle; 
+    double radius;
+  public:
+    Circle(int,int,int);  // constructor
+    static int scaleFactor;
+    void setScale(int);
+    int getScale();
+    void printCenter();
+    double calculateArea();
+};
+int Circle::scaleFactor = 0;
+Circle::Circle(int x,int y,int r){
+  xcircle = x;
+  ycircle = y;
+  radius = r;
+}
+
+void Circle::setScale(int scale){
+  scaleFactor = scale;
+}
+int Circle::getScale(){
+  return scaleFactor;
+}
+
+void Circle::printCenter(){
+  cout << "x: " << xcircle << "  y: " << ycircle <<endl;
+}
+double Circle::calculateArea(){
+  return radius*radius* M_PI;
+}
+
+
+int main()
+{
+  Circle c(0,0,3);
+  c.setScale(2);
+  cout << "Escala:  "<< c.getScale() << endl;
+  cout << "centro:  " << endl;
+  c.printCenter();
+  cout << "Area:  " << c.calculateArea() << endl;
+}
+
 **************************************************
 Ejercicio 11, página 507 
 **************************************************
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+// class declaration section
+class Fraction
+{
+  private:
+    double num;
+    double denom; 
+  public:
+    Fraction(double n= 1,double d= 1 ) : num(n), denom(d) {}
+    Fraction adding(Fraction f);
+    Fraction subtracting(Fraction f);
+    Fraction multiplying(Fraction f);
+    Fraction dividing(Fraction f);
+    double getNum();
+    double getDenom();
+    void ingressFraction();
+    void printFraction();
+};
+
+Fraction Fraction::adding(Fraction f){
+
+  return  Fraction(num * f.getDenom() + denom * f.getNum(),denom * f.getDenom());
+}
+Fraction Fraction::subtracting(Fraction f){
+  return Fraction(num * f.getDenom() - denom * f.getNum() , denom * f.getDenom());
+}
+Fraction Fraction::multiplying(Fraction f){
+  return Fraction(num* f.getNum() , denom * f.getDenom());
+}
+Fraction Fraction::dividing(Fraction f){
+  return Fraction(num * f.getDenom() , denom * f.getNum());
+}
+double Fraction::getNum(){
+  return num;
+}
+double Fraction::getDenom(){
+  return denom;
+}
+void Fraction::ingressFraction(){
+  cout << "Please enter the num: ";
+  cin >> num;
+  cout << "Please enter the denom: ";
+  cin >> denom;
+}
+void Fraction::printFraction(){
+  cout << num << "/" << denom << endl;
+}
+int main()
+{
+  Fraction f1,f2,f3;
+  f1.ingressFraction();
+  f2.ingressFraction();
+
+  cout << "Sum: " << endl;
+  f1.adding(f2).printFraction();
+  cout << "Substraction: " << endl;
+  f1.subtracting(f2).printFraction();
+  cout << "Multiply: " << endl;
+  f1.multiplying(f2).printFraction();
+  cout << "Division: " << endl;
+  f1.dividing(f2).printFraction();
+
+
+}
+
 **************************************************
 Ejercicio 4, página 518 
 **************************************************
+#include <iostream>
+#include <iomanip>
+using namespace std;
+// class declaration section
+
+#include <iomanip>
+using namespace std;
+// class declaration section
+class Date
+{
+  private:
+    int month;
+    int day;
+    int year;
+  public:
+    Date(int = 7, int = 4, int = 2012);   // constructor
+    void showDate();      // method to display a date
+    void swap(Date&);    // method to swap two dates
+};
+// class implementation section
+Date::Date(int mm, int dd, int yyyy)
+{
+  month = mm;
+  day = dd;
+  year = yyyy;
+}
+void Date::showDate()
+{
+  cout << setfill('0')
+       << setw(2) << month << '/'
+       << setw(2) << day << '/'
+       << setw(2) << year % 100;
+  return;
+}
+void Date::swap(Date& temp) // method to swap two dates
+{
+  int tempstore;
+  // swap the day member
+  tempstore = temp.day;
+  temp.day = day;
+  day = tempstore;
+  // swap the month member
+  tempstore = temp.month;
+  temp.month = month;
+  month = tempstore;
+  // swap the year member
+  tempstore = temp.year;
+  temp.year = year;
+  year = tempstore;
+  return; 
+  }
+int main()
+{
+  Date oldDate(4,3,1999);
+  Date newDate(12,18,2012);
+ 
+  cout << "The date stored in oldDate is ";
+  oldDate.showDate();
+  cout << "\nThe date stored in newDate is ";
+  newDate.showDate();
+  newDate.swap(oldDate);  // swap dates by passing an address
+  cout << "\n\nAfter the swap:\n" <<endl;
+
+  cout << "The date stored in oldDate is ";
+  oldDate.showDate();
+  cout << "\nThe date stored in newDate is ";
+  newDate.showDate();
+  cout << endl;
+  return 0;
+}
+
 **************************************************
 Ejercicio 3, página 528 
 **************************************************
+#include <iostream>
+#include <iomanip>
+using namespace std;
+// class declaration section
+class Date
+{
+  private:
+    int month, day, year;
+  public:
+    Date(int = 7, int = 4, int = 2012);  // constructor
+    // constructor for converting from long to Date
+    Date(long);
+    void showDate();
+    int change();
+};
+// class implementation section
+Date::Date(int mm, int dd, int yyyy)  // constructor
+{
+  month = mm;
+  day = dd;
+  year = yyyy;
+}
+// constructor for converting from long to Date
+Date::Date(long findate)
+{
+  year = int(findate/10000.0);
+  month = int((findate - year * 10000.0)/100.0);
+  day = int(findate - year * 10000.0 - month * 100.0);
+}
+// member function to display a date
+void Date::showDate()
+{
+  cout << setfill('0')
+       << setw(2) << month << '/'
+       << setw(2) << day << '/'
+       << setw(2) << year % 100;
+  return;
+}
+
+int Date::change(){
+  int mp,yp;
+  if (month <= 2){
+      mp = 0;
+      yp = year - 1;
+  }else{
+    mp = (int)(0.4 * month + 2.3);
+    yp = year;
+  }
+  int T =  int(yp / 4) - int(yp / 100) + int(yp / 400);
+  return 365 * year + 31 * (month - 1) + day + T - mp;
+}
+
+int main()
+{
+  Date a(1,31,2011),b(3,16,2012);  
+  cout << "Julian Date" << a.change() << endl;
+  cout <<" Julian Date" << b.change() << endl;
+
+
+  return 0;
+} 
 **************************************************
 Ejercicio 4, página 533 
 **************************************************
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+// class declaration section
+class Complex
+{
+  // friends list
+  friend double addreal(Complex&, Complex&);
+  friend double addimag(Complex&, Complex&);
+  private:
+    double real;
+    double imag;
+  public:
+    Complex(double = 0, double = 0);  // constructor
+    void display();
+    Complex operator[](int);
+};
+Complex Complex::operator[](int value)
+{
+  return Complex(real*value,imag*value);
+}
+Complex::Complex(double rl, double im)
+{
+  real = rl;
+  imag = im;
+}
+void Complex::display()
+{
+  char sign = '+';
+  if(imag < 0) sign = '-';
+  cout << real << sign << abs(imag) << 'i';
+  return;
+}
+// friend implementations
+double addreal(Complex &a, Complex &b)
+{
+  return(a.real + b.real);
+}
+
+double addimag(Complex &a, Complex &b)
+{
+  return(a.imag + b.imag);
+}
+int main()
+{
+  Complex a(3.2, 5.6);
+  int value = 2;
+  Complex b = a[value]; 
+  b.display();
+  return 0;
+}
 **************************************************
 Ejercicio 9, página 561 
 **************************************************
+
+#include <iostream>
+#include <cmath>
+#include<sys/types.h>
+#include<unistd.h>
+using namespace std;
+
+class Customer {
+
+  private:
+    int gallons;
+    int arrival_time;
+    static int totalgalons;
+  public:
+    Customer(int g = 1,int a = 1) : gallons(g), arrival_time(a) {} 
+    int getGalons();
+    int getTime();
+    void printData();
+    int getTotalGallons();
+    void increaseGallons();
+};
+int Customer::totalgalons = 1;
+
+void Customer::increaseGallons(){
+  totalgalons = totalgalons + gallons;
+}
+int Customer::getTotalGallons(){
+  return totalgalons;
+}
+
+void Customer::printData(){
+  cout << "Time: " << arrival_time << " minutes" << endl;
+  cout << "Gallons: " << gallons << endl;
+}
+
+int main()
+{
+  srand(getpid());
+  Customer a;
+  for(int i = 0; i < 10; i++){
+    Customer c(rand() % 13 + 3,rand() % 15 + 1);
+    c.increaseGallons();
+    c.printData();
+  }
+  cout << "Total Gallons: " << a.getTotalGallons() << endl;
+  
+  return 0;
+}
 **************************************************
 Ejercicio 10, página 562
 **************************************************
+
+
+
+#include <iostream>
+#include <cmath>
+#include<sys/types.h>
+#include<unistd.h>
+using namespace std;
+
+class Customer {
+
+  private:
+    int gallons;
+    int arrival_time;
+    int grade;
+    static int totalgalons87;
+    static int totalgalons93;
+    static int totalgalons97;
+  public:
+    Customer(int g = 1,int a = 1,int r = 1) : gallons(g), arrival_time(a),grade(r) {} 
+    int getGalons();
+    int getTime();
+    void printData();
+    int getTotalGallons87();
+    int getTotalGallons93();
+    int getTotalGallons97();
+    void increaseGallons();
+};
+int Customer::totalgalons87 = 0;
+int Customer::totalgalons93 = 0;
+int Customer::totalgalons97 = 0;
+
+void Customer::increaseGallons(){
+  
+  if (grade == 87) {
+    totalgalons87 = totalgalons87 + gallons;
+  }
+  
+  if (grade == 93) {
+    totalgalons93 = totalgalons93 + gallons;
+  }
+  
+  if (grade == 97) {
+    totalgalons97 = totalgalons97 + gallons;
+  }
+}
+
+int Customer::getTotalGallons87(){
+  return totalgalons87;
+}
+int Customer::getTotalGallons93(){
+  return totalgalons93;
+}
+int Customer::getTotalGallons97(){
+  return totalgalons87;
+}
+
+void Customer::printData(){
+  cout << "Time: " << arrival_time << " minutes" << endl;
+  cout << "Gallons: " << gallons << endl;
+  cout << "Grades: " << grade << endl;
+}
+
+int main()
+{
+  srand(getpid());
+  Customer a;
+  int grades[3] = {87,93,97};
+
+  for(int i = 0; i < 10; i++){
+    Customer c(rand() % 13 + 3,rand() % 15 + 1,grades[rand() % 3]);
+    c.increaseGallons();
+    c.printData();
+  }
+  cout << "Total Gallons 87 Octanes: " << a.getTotalGallons87() << endl;
+  cout << "Total Gallons 93 Octanes: " << a.getTotalGallons93() << endl;
+  cout << "Total Gallons 97 Octanes: " << a.getTotalGallons97() << endl;
+  return 0;
+}

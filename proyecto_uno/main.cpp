@@ -1,38 +1,77 @@
+
 #include <iostream>
-#include <iomanip>
+#include <cmath>
+#include<sys/types.h>
+#include<unistd.h>
 using namespace std;
-// class declaration section
-class Date
-{
+
+class Customer {
+
   private:
-    long yyyymmdd;
+    int gallons;
+    int arrival_time;
+    int grade;
+    static int totalgalons87;
+    static int totalgalons93;
+    static int totalgalons97;
   public:
-    Date(long = 20120704L);
-    Date(int , int , int );   
-    void showDate();  
+    Customer(int g = 1,int a = 1,int r = 1) : gallons(g), arrival_time(a),grade(r) {} 
+    int getGalons();
+    int getTime();
+    void printData();
+    int getTotalGallons87();
+    int getTotalGallons93();
+    int getTotalGallons97();
+    void increaseGallons();
 };
+int Customer::totalgalons87 = 0;
+int Customer::totalgalons93 = 0;
+int Customer::totalgalons97 = 0;
 
-Date::Date(int mm, int dd, int yyyy)
-{
-  yyyymmdd = yyyy * 10000.0 + mm * 100.0 + dd;
-
+void Customer::increaseGallons(){
+  
+  if (grade == 87) {
+    totalgalons87 = totalgalons87 + gallons;
+  }
+  
+  if (grade == 93) {
+    totalgalons93 = totalgalons93 + gallons;
+  }
+  
+  if (grade == 97) {
+    totalgalons97 = totalgalons97 + gallons;
+  }
 }
 
-Date::Date(long ymd)
-{
-    yyyymmdd = ymd;
+int Customer::getTotalGallons87(){
+  return totalgalons87;
 }
-void Date::showDate()
-{
-  cout << "The date is ";
-  cout << yyyymmdd << endl;
-  return;
+int Customer::getTotalGallons93(){
+  return totalgalons93;
 }
+int Customer::getTotalGallons97(){
+  return totalgalons87;
+}
+
+void Customer::printData(){
+  cout << "Time: " << arrival_time << " minutes" << endl;
+  cout << "Gallons: " << gallons << endl;
+  cout << "Grades: " << grade << endl;
+}
+
 int main()
 {
-  Date a, b(4,1,1998), c(20090515L); // declare three objects
-  a.showDate();           // display object a's values
-  b.showDate();           // display object b's values
-  c.showDate();           // display object c's values
+  srand(getpid());
+  Customer a;
+  int grades[3] = {87,93,97};
+
+  for(int i = 0; i < 10; i++){
+    Customer c(rand() % 13 + 3,rand() % 15 + 1,grades[rand() % 3]);
+    c.increaseGallons();
+    c.printData();
+  }
+  cout << "Total Gallons 87 Octanes: " << a.getTotalGallons87() << endl;
+  cout << "Total Gallons 93 Octanes: " << a.getTotalGallons93() << endl;
+  cout << "Total Gallons 97 Octanes: " << a.getTotalGallons97() << endl;
   return 0;
 }
