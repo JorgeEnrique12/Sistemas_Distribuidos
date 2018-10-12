@@ -1,0 +1,11 @@
+server: cliente.cpp Solicitud.o 
+	g++ cliente.cpp Solicitud.o SocketDatagrama.o PaqueteDatagrama.o -o cliente
+
+Solicitud.o: Solicitud.cpp Solicitud.o SocketDatagrama.o Solicitud.h
+	g++ Solicitud.cpp -c
+
+SocketDatagrama.o: SocketDatagrama.cpp SocketDatagrama.o PaqueteDatagrama.o SocketDatagrama.h
+	g++ SocketDatagrama.cpp -c
+
+PaqueteDatagrama.o: PaqueteDatagrama.cpp PaqueteDatagrama.o PaqueteDatagrama.h
+	g++ PaqueteDatagrama.cpp -c
